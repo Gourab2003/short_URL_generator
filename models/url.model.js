@@ -7,7 +7,7 @@
     },
     redirectUrl:{
         type: String,
-        required: true,
+        required: true
     }, 
     visitHistory:[
         {

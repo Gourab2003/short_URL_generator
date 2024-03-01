@@ -13,7 +13,8 @@ connect_DB()
 .catch((Error)=>{
     console.log("mongo db connection failed", Error);
 })
-
+//app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use("/url", router);
 
 app.listen(PORT, ()=>{
