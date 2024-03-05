@@ -2,6 +2,7 @@ import  express  from "express";
 import router from "./routes/url.router.js";
 import connect_DB from "./db/index.js";
 import { URL } from "./models/url.model.js";
+import HomeRouter from "./routes/home.router.js";
 
 const  PORT = 3000;
 const app = express();
@@ -15,11 +16,12 @@ connect_DB()
     console.log("mongo db connection failed", Error);
 })
 
-//app.use(express.json())         // basically used when sending raw json data through postman or browser
-
-app.use(express.urlencoded({extended:true}))
+app.use(express.json())         // basically used when sending raw json data through postman or browser
+app.use(express.urlencoded({extended:true}))   // basically use this middlewere when working with from data
 
 app.use("/url", router);
+
+app.use("/", HomeRouter)
 
 app.get("/:shortId", async (req, res) => {
     try {

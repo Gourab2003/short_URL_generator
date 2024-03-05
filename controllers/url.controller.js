@@ -11,9 +11,7 @@ async function shortURLgenerator(req, res){
         visitHistory: []
      })
     
-     return res.json({
-        id: shortId
-    });
+    return res.render("index.ejs", {id:shortId})
 };
 
 
